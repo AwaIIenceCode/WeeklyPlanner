@@ -24,23 +24,49 @@ class MyClass
             else
             {
                 Console.WriteLine("There is no such day of the week");
+                Console.Write("Please repeat your entry ->");
                 userDayChoice = Console.ReadLine();
                 continue;
             }
         }
     }
-    
-    
+
+
     /// <summary>
     /// method for adding tasks for the day
     /// </summary> 
-    static void AddTaskToDay(string[][] userTasks, DayOfWeek dayForTask)
-    {}
+     static void AddTaskToDay(string[][] userTasks, DayOfWeek selectDay)
+    {
+        if (userTasks[(int)selectDay] == null) { userTasks[(int)selectDay] = new string[0]; }
+        
+        Console.Write($"Write a task for {selectDay} -> ");
+        string userTask = Console.ReadLine();
+
+        while (string.IsNullOrEmpty(userTask))
+        {
+            Console.Write("You didn't enter anything\nPlease repeat your entry ->");
+            Console.ReadLine();
+            continue;
+        }
+
+        int currentLength = userTasks[(int)selectDay].Length;
+        string[] newTasks = new string[currentLength + 1];
+
+        for (byte i = 0; i < currentLength; i++)
+        {
+            newTasks[i] = userTasks[(int)selectDay][i];
+        }
+        
+        newTasks[currentLength] = userTask;
+        userTasks[(int)selectDay] = newTasks;
+        
+        Console.WriteLine($"\nYour task {userTask} added to {selectDay}!");
+    }
     
     /// <summary>
     /// method for removing tasks from the day
     /// </summary>
-    static void RemoveTaskToDay()
+    static void RemoveTaskToDay(string[][] userTasks, DayOfWeek selectDay)
     {}
     
     /// <summary>
@@ -56,7 +82,6 @@ class MyClass
                           "\nYou can also print out your full schedule for the week.");
 
         const byte sizeColumn = 7;
-        byte sizeLine;
 
         string[][] userTasks = new string[sizeColumn][];
 
@@ -81,7 +106,8 @@ class MyClass
 
                 case "2":
                 {
-                    RemoveTaskToDay();
+                    DayOfWeek selectDay = ChoiceDayOfWeek(userTasks);
+                    RemoveTaskToDay(userTasks, selectDay);
                     break;
                 }
 
