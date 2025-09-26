@@ -7,30 +7,34 @@ class MyClass
     /// <summary>
     /// Method for filling in daily tasks by the user 
     /// </summary>
-    static void ChoiceDayOfWeek()
+    static DayOfWeek ChoiceDayOfWeek(string[][] userTasks)
     {
         Console.Write("Write the day of the week you need to record the task -> ");
 
         string userDayChoice = Console.ReadLine();
-
+        DayOfWeek dayForTask;
+        
         while (true)
         {
-            if (Enum.TryParse(userDayChoice, true, out DayOfWeek dayForTask))
+            if (Enum.TryParse(userDayChoice, true, out dayForTask))
             {
-                AddTaskToDay();
-                break;
+                return dayForTask;
             }
 
-            else { Console.WriteLine("There is no such day of the week"); continue; }
+            else
+            {
+                Console.WriteLine("There is no such day of the week");
+                userDayChoice = Console.ReadLine();
+                continue;
+            }
         }
-      
     }
     
     
     /// <summary>
     /// method for adding tasks for the day
-    /// </summary>
-    static void AddTaskToDay()
+    /// </summary> 
+    static void AddTaskToDay(string[][] userTasks, DayOfWeek dayForTask)
     {}
     
     /// <summary>
@@ -56,8 +60,6 @@ class MyClass
 
         string[][] userTasks = new string[sizeColumn][];
 
-        ChoiceDayOfWeek();
-
         while (true)
         {
             Console.WriteLine("\nPress \"1\" - for add task" +
@@ -72,7 +74,8 @@ class MyClass
             {
                 case "1":
                 {
-                    ChoiceDayOfWeek();
+                    DayOfWeek selectDay = ChoiceDayOfWeek(userTasks);
+                    AddTaskToDay(userTasks, selectDay);
                     break;
                 }
 
