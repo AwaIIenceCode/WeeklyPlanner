@@ -45,16 +45,19 @@ class MyClass
         while (string.IsNullOrEmpty(userTask))
         {
             Console.Write("You didn't enter anything\nPlease repeat your entry ->");
-            Console.ReadLine();
+            userTask = Console.ReadLine();
             continue;
         }
 
         int currentLength = userTasks[(int)selectDay].Length;
-        string[] newTasks = new string[currentLength + 1];
+        string[] newTasks = new string[checked(currentLength + 1)];
 
-        for (byte i = 0; i < currentLength; i++)
+        if (currentLength > 0)
         {
-            newTasks[i] = userTasks[(int)selectDay][i];
+            for (int i = 0; i < currentLength; i++)
+            {
+                newTasks[i] = userTasks[(int)selectDay][i];
+            }
         }
         
         newTasks[currentLength] = userTask;
