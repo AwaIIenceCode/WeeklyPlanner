@@ -1,0 +1,33 @@
+# Build results
+bin/
+obj/
+
+# Rider
+.idea/
+*.iml
+
+# VS
+.vs/
+*.csproj.user
+*.user
+*.suo
+TestResults/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Env / Secrets
+*.env
+appsettings*.json
+
+# Git temp files
+*.orig
+*~
+
+# Optional (if using)
+_ReSharper*/
+packages/
