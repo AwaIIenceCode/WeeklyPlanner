@@ -13,12 +13,17 @@ class MyClass
 
         string userDayChoice = Console.ReadLine();
 
-        if (Enum.TryParse(userDayChoice, true, out DayOfWeek dayForTask)) ;
+        while (true)
         {
-            AddTaskToDay();
-        }
+            if (Enum.TryParse(userDayChoice, true, out DayOfWeek dayForTask))
+            {
+                AddTaskToDay();
+                break;
+            }
 
-    //else { Console.WriteLine("There is no such day of the week"); }
+            else { Console.WriteLine("There is no such day of the week"); continue; }
+        }
+      
     }
     
     
