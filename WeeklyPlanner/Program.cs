@@ -35,35 +35,46 @@ class MyClass
     /// <summary>
     /// method for adding tasks for the day
     /// </summary> 
-     static void AddTaskToDay(string[][] userTasks, DayOfWeek selectDay)
+    static void AddTaskToDay(string[][] userTasks, DayOfWeek selectDay)
     {
         if (userTasks[(int)selectDay] == null) { userTasks[(int)selectDay] = new string[0]; }
-        
-        Console.Write($"Write a task for {selectDay} -> ");
-        string userTask = Console.ReadLine();
-
-        while (string.IsNullOrEmpty(userTask))
+    
+        while (true)
         {
-            Console.Write("You didn't enter anything\nPlease repeat your entry ->");
-            userTask = Console.ReadLine();
-            continue;
-        }
+            Console.Write($"Write a task for {selectDay} (press Tab to finish) -> ");
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true); 
 
-        int currentLength = userTasks[(int)selectDay].Length;
-        string[] newTasks = new string[checked(currentLength + 1)];
-
-        if (currentLength > 0)
-        {
-            for (int i = 0; i < currentLength; i++)
+            if (keyInfo.Key == ConsoleKey.Tab)
             {
-                newTasks[i] = userTasks[(int)selectDay][i];
+                Console.WriteLine(); 
+                break;
             }
+            
+            Console.Write(keyInfo.KeyChar); 
+            string userTask = keyInfo.KeyChar + Console.ReadLine(); 
+
+            if (string.IsNullOrEmpty(userTask))
+            {
+                Console.WriteLine("You didn't enter anything\nPlease repeat your entry ->");
+                continue;
+            }
+
+            int currentLength = userTasks[(int)selectDay].Length;
+            string[] newTasks = new string[checked(currentLength + 1)];
+
+            if (currentLength > 0)
+            {
+                for (int i = 0; i < currentLength; i++)
+                {
+                    newTasks[i] = userTasks[(int)selectDay][i];
+                }
+            }
+    
+            newTasks[currentLength] = userTask;
+            userTasks[(int)selectDay] = newTasks;
+    
+            Console.WriteLine($"\nYour task '{userTask}' added to {selectDay}!");
         }
-        
-        newTasks[currentLength] = userTask;
-        userTasks[(int)selectDay] = newTasks;
-        
-        Console.WriteLine($"\nYour task {userTask} added to {selectDay}!");
     }
     
     /// <summary>
