@@ -82,6 +82,42 @@ class MyClass
     static void RemoveTaskToDay(string[][] userTasks, DayOfWeek selectDay)
     {
         ShowTasksForDay(userTasks, selectDay);
+        
+        while (true)
+        {
+            Console.Write($"\nEnter the number of the task to remove (1-{userTasks[(int)selectDay].Length}, press Tab to finish) -> ");
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            
+            if (keyInfo.Key == ConsoleKey.Tab)
+            {
+                Console.WriteLine();
+                return;
+            }
+            
+            Console.Write(keyInfo.KeyChar);
+            string input = keyInfo.KeyChar + Console.ReadLine();
+            if (!int.TryParse(input, out int taskNumber) || taskNumber < 1 || taskNumber > userTasks[(int)selectDay].Length)
+            {
+                Console.WriteLine($"Invalid number! Enter a number between 1 and {userTasks[(int)selectDay].Length} or press Tab.");
+                continue;
+            }
+            
+            int index = taskNumber - 1; 
+            int currentLength = userTasks[(int)selectDay].Length;
+            string[] newTasks = new string[checked(currentLength - 1)];
+            
+            for (int i = 0, j = 0; i < currentLength; i++)
+            {
+                if (i != index)
+                {
+                    newTasks[j] = userTasks[(int)selectDay][i];
+                    j++;
+                }
+            }
+            
+            userTasks[(int)selectDay] = newTasks;
+            Console.WriteLine($"\nTask {taskNumber} removed from {selectDay}!");
+        }
     }
     
     /// <summary>
