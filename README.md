@@ -79,7 +79,7 @@ Tasks for Wednesday:
 
 ## 💻 Installation
 1. Clone the repository:
-   ```bash git clone https://github.com/AwaIIenceCode/WeeklyPlanner.git
+   ```bash git clone https://github.com/AwaIIenceCode/WeeklyPlanner.git```
 2. Open in your favorite IDE (e.g., Rider, Visual Studio).
 3. Run the program in a C# environment (.NET Core or later).
 
