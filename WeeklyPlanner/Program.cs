@@ -5,7 +5,7 @@ class MyClass
     enum DayOfWeek { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday }
 
     /// <summary>
-    /// Method for filling in daily tasks by the user 
+    /// Method for selecting a day for a user 
     /// </summary>
     static DayOfWeek ChoiceDayOfWeek(string[][] userTasks)
     {
