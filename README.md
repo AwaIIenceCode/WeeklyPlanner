@@ -83,4 +83,5 @@ Tasks for Wednesday:
 2. Open in your favorite IDE (e.g., Rider, Visual Studio).
 3. Run the program in a C# environment (.NET Core or later).
 
-4. <img width="966" height="687" alt="image" src="https://github.com/user-attachments/assets/db15a789-e9e8-40c1-925d-5923e4045a64" />
+##Work example
+<img width="966" height="687" alt="image" src="https://github.com/user-attachments/assets/db15a789-e9e8-40c1-925d-5923e4045a64" />
