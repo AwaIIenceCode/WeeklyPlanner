@@ -65,15 +65,14 @@ Write a task for Tuesday (press Tab to finish) -> [Tab pressed to finish]
 Enter your choice -> 3
 
 Tasks for Monday:
-
 1. Code
 2. Debug
 
 Tasks for Tuesday:
-1.Visit mom
+1. Visit mom
 
 Tasks for Wednesday:
-1.Feed spider
+1. Feed spider
 
 (If no tasks in a day, it skips that day. If no tasks at all, shows "No tasks scheduled for the week!")
 
