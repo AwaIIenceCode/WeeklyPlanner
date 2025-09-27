@@ -30,8 +30,7 @@ class MyClass
             }
         }
     }
-
-
+    
     /// <summary>
     /// method for adding tasks for the day
     /// </summary> 
@@ -41,7 +40,7 @@ class MyClass
     
         while (true)
         {
-            Console.Write($"Write a task for {selectDay} (press Tab to finish) -> ");
+            Console.Write($"\nWrite a task for {selectDay} (press Tab to finish) -> ");
             ConsoleKeyInfo keyInfo = Console.ReadKey(true); 
 
             if (keyInfo.Key == ConsoleKey.Tab)
@@ -76,12 +75,14 @@ class MyClass
             Console.WriteLine($"\nYour task '{userTask}' added to {selectDay}!");
         }
     }
-    
+
     /// <summary>
     /// method for removing tasks from the day
     /// </summary>
     static void RemoveTaskToDay(string[][] userTasks, DayOfWeek selectDay)
-    {}
+    {
+        ShowTasksForDay(userTasks, selectDay);
+    }
     
     /// <summary>
     /// method for displaying the schedule for the week
@@ -89,6 +90,23 @@ class MyClass
     static void ShowWeeklySchedule()
     {}
 
+    /// <summary>
+    ///  method for displaying the schedule for the day
+    /// </summary>
+    static void ShowTasksForDay(string[][] userTasks, DayOfWeek selectDay)
+    {
+        if (userTasks[(int)selectDay] == null || userTasks[(int)selectDay].Length == 0)
+        {
+            Console.WriteLine($"There are no tasks for {selectDay}!"); return;
+        }
+
+        Console.WriteLine($"\nTasks for {selectDay}:");
+        for (int i = 0; i < userTasks[(int)selectDay].Length; i++)
+        {
+            Console.WriteLine($"{i + 1}. {userTasks[(int)selectDay][i]}");
+        }
+    }
+    
     static void Main()
     {
         Console.WriteLine("Welcome to your weekly planner!" +
@@ -98,7 +116,7 @@ class MyClass
         const byte sizeColumn = 7;
 
         string[][] userTasks = new string[sizeColumn][];
-
+        
         while (true)
         {
             Console.WriteLine("\nPress \"1\" - for add task" +
