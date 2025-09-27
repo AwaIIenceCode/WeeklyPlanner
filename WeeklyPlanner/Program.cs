@@ -142,12 +142,27 @@ class MyClass
             Console.WriteLine();
         }
     }
-    
+
     /// <summary>
-    /// method for displaying the schedule for the week
+    /// Method for displaying the schedule for the week
     /// </summary>
-    static void ShowWeeklySchedule()
-    {}
+    static void ShowWeeklySchedule(string[][] userTasks)
+    {
+        bool hasTasks = false;
+        foreach (DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+        {
+            if (userTasks[(int)day] != null && userTasks[(int)day].Length > 0)
+            {
+                hasTasks = true;
+                ShowTasksForDay(userTasks, day);
+            }
+        }
+
+        if (!hasTasks)
+        {
+            Console.WriteLine("\nNo tasks scheduled for the week!");
+        }
+    }
 
     /// <summary>
     ///  method for displaying the schedule for the day
@@ -204,7 +219,7 @@ class MyClass
 
                 case "3":
                 {
-                    ShowWeeklySchedule();
+                    ShowWeeklySchedule(userTasks);
                     break;
                 }
                 
