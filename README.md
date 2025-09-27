@@ -83,4 +83,5 @@ Tasks for Wednesday:
 3. Run the program in a C# environment (.NET Core or later).
 
 ##Work example
-<img width="966" height="687" alt="image" src="https://github.com/user-attachments/assets/db15a789-e9e8-40c1-925d-5923e4045a64" />
+<img width="1280" height="721" alt="image" src="https://github.com/user-attachments/assets/afcfa6a4-1481-4ca9-b940-404ef07c5556" />
+
